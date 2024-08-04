@@ -69,25 +69,55 @@
                                     <action selector="bookDelete:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PAd-jq-ZzG"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter Books:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4S4-cP-sLP">
+                                <rect key="frame" x="30" y="716" width="94" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Category" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Pq-Py-JCl">
+                                <rect key="frame" x="30" y="742" width="217" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sc4-T0-sHc">
+                                <rect key="frame" x="257" y="742" width="106" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="JNQ-q7-4US"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Search"/>
+                                <connections>
+                                    <action selector="filterBooks:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f7P-XO-Fpr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="4S4-cP-sLP" firstAttribute="top" secondItem="EVS-13-XKG" secondAttribute="bottom" constant="5" id="5qh-6k-8rs"/>
                             <constraint firstItem="8PN-kX-SE1" firstAttribute="top" secondItem="kzB-q7-Hye" secondAttribute="bottom" constant="10" id="92k-qD-gMM"/>
                             <constraint firstItem="qqk-ue-aIV" firstAttribute="leading" secondItem="EVS-13-XKG" secondAttribute="trailing" constant="10" id="B72-XP-sj6"/>
                             <constraint firstItem="8PN-kX-SE1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BRe-2I-ZdQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qqk-ue-aIV" secondAttribute="trailing" constant="30" id="G3F-LW-b3Q"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kzB-q7-Hye" secondAttribute="trailing" id="Gcc-kw-TjG"/>
+                            <constraint firstItem="Sc4-T0-sHc" firstAttribute="leading" secondItem="8Pq-Py-JCl" secondAttribute="trailing" constant="10" id="Glu-Zl-5eh"/>
+                            <constraint firstItem="8Pq-Py-JCl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="H8i-22-PIx"/>
                             <constraint firstItem="kzB-q7-Hye" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="HOk-10-fTF"/>
                             <constraint firstItem="EVS-13-XKG" firstAttribute="top" secondItem="8PN-kX-SE1" secondAttribute="bottom" constant="10" id="Kdw-2Y-RJL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8Pq-Py-JCl" secondAttribute="trailing" constant="146" id="Ld4-wo-rtk"/>
                             <constraint firstItem="OXg-Hd-0OO" firstAttribute="top" secondItem="kzB-q7-Hye" secondAttribute="bottom" constant="10" id="O6o-Wf-qsB"/>
                             <constraint firstItem="8PN-kX-SE1" firstAttribute="leading" secondItem="Zau-Xf-KzP" secondAttribute="trailing" constant="10" id="R4g-AG-N1v"/>
+                            <constraint firstItem="Sc4-T0-sHc" firstAttribute="top" secondItem="qqk-ue-aIV" secondAttribute="bottom" constant="31" id="Spn-2H-so4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EVS-13-XKG" secondAttribute="trailing" constant="146" id="VrF-7Z-WoB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kzB-q7-Hye" secondAttribute="bottom" constant="200" id="WKN-1Y-Adn"/>
                             <constraint firstItem="OXg-Hd-0OO" firstAttribute="leading" secondItem="8PN-kX-SE1" secondAttribute="trailing" constant="10" id="YAV-AA-DOw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Sc4-T0-sHc" secondAttribute="trailing" constant="30" id="YKH-A7-34b"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OXg-Hd-0OO" secondAttribute="trailing" constant="30" id="ad5-vt-VY1"/>
                             <constraint firstItem="Zau-Xf-KzP" firstAttribute="top" secondItem="kzB-q7-Hye" secondAttribute="bottom" constant="10" id="gI2-U6-xmZ"/>
                             <constraint firstItem="kzB-q7-Hye" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ipT-iq-OPK"/>
+                            <constraint firstItem="8Pq-Py-JCl" firstAttribute="top" secondItem="4S4-cP-sLP" secondAttribute="bottom" constant="5" id="kiP-2N-u8x"/>
+                            <constraint firstItem="4S4-cP-sLP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="knc-KN-e5X"/>
                             <constraint firstItem="qqk-ue-aIV" firstAttribute="top" secondItem="OXg-Hd-0OO" secondAttribute="bottom" constant="10" id="l31-JM-PiP"/>
                             <constraint firstItem="Zau-Xf-KzP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="ni1-jj-LU7"/>
                             <constraint firstItem="EVS-13-XKG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="of6-VJ-PuJ"/>
@@ -98,6 +128,7 @@
                         <outlet property="bookCategory" destination="OXg-Hd-0OO" id="OCy-Tf-xuP"/>
                         <outlet property="bookDelete" destination="qqk-ue-aIV" id="Pq2-43-b23"/>
                         <outlet property="bookTitle" destination="Zau-Xf-KzP" id="VTE-M6-yHH"/>
+                        <outlet property="categoryTextField" destination="8Pq-Py-JCl" id="UGY-LH-Zc6"/>
                         <outlet property="tableView" destination="kzB-q7-Hye" id="V1R-T3-OqL"/>
                     </connections>
                 </viewController>
@@ -111,7 +142,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

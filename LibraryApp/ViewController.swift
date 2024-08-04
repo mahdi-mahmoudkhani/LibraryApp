@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     
     private var bookList: [Book] = []
+    private var filterredBookList: [Book] = []
     private var selectedCell: IndexPath?
     
     override func viewDidLoad() {
@@ -22,6 +23,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var bookAuthor: UITextField!
     @IBOutlet weak var bookCategory: UITextField!
     @IBOutlet weak var bookDelete: UIButton!
+    @IBOutlet weak var categoryTextField: UITextField!
     
     @IBAction func addBook(_ sender: UIButton) {
         
@@ -49,6 +51,19 @@ class ViewController: UIViewController {
         tableView.reloadData()
     }
     
+    @IBAction func filterBooks(_ sender: Any) {
+        
+        guard categoryTextField.text != "" else {
+            filterredBookList = bookList
+            tableView.reloadData()
+            
+            return
+        }
+        filterredBookList = searchBook( category: Category(rawValue: categoryTextField.text! ) )
+        tableView.reloadData()
+        categoryTextField.text = ""
+    }
+    
     private func addBook(title: String!, author: String!, category: Category!) {
         
         guard !bookList.contains(where: { $0.title == title &&
@@ -72,12 +87,12 @@ class ViewController: UIViewController {
         }
     }
     
-    private func searchBook(title: String? = nil, category: Category? = nil, author: String? = nil) -> [Book] {
+    private func searchBook(title: String? = "", category: Category? = nil, author: String? = "") -> [Book] {
         
         return bookList.filter { book in
-            let matchedTitle = title?.isEmpty == true || book.title.lowercased().contains(title!.lowercased())
+            let matchedTitle = title == "" || book.title.lowercased().contains(title!.lowercased())
             let matchedCategory = category == nil || book.category == category
-            let matchedAuthor = author?.isEmpty == true || book.author.lowercased().contains(author!.lowercased())
+            let matchedAuthor = author == "" || book.author.lowercased().contains(author!.lowercased())
             
             return matchedTitle && matchedCategory && matchedAuthor
         }
@@ -89,7 +104,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return bookList.count
+        if categoryTextField.text == "" {
+            filterredBookList = bookList
+        }
+        return filterredBookList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -102,13 +120,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.contentView.subviews.forEach { $0.removeFromSuperview() }
         
         let bookTitle = UILabel()
-        bookTitle.text = bookList[indexPath.row].title
+        bookTitle.text = filterredBookList[indexPath.row].title
         bookTitle.font = UIFont.systemFont(ofSize: 30)
         bookTitle.translatesAutoresizingMaskIntoConstraints = false
         cell.contentView.addSubview(bookTitle)
         
         let bookAuthor = UILabel()
-        bookAuthor.text = bookList[indexPath.row].author
+        bookAuthor.text = filterredBookList[indexPath.row].author
         bookAuthor.translatesAutoresizingMaskIntoConstraints = false
         cell.contentView.addSubview(bookAuthor)
         
