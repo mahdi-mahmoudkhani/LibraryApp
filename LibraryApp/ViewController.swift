@@ -27,61 +27,61 @@ class ViewController: UIViewController {
     
     @IBAction func addBook(_ sender: UIButton) {
         
-        guard bookTitle.text != "", bookAuthor.text != "", bookCategory.text != "" else {
+        guard self.bookTitle.text != "", self.bookAuthor.text != "", self.bookCategory.text != "" else {
             
             return
         }
         
-        bookList.append( Book(title: bookTitle.text!, author: bookAuthor.text!, category: Category(rawValue: bookCategory.text!) ?? .none) )
+        self.bookList.append( Book(title: self.bookTitle.text!, author: self.bookAuthor.text!, category: Category(rawValue: self.bookCategory.text!) ?? .none) )
         
-        bookTitle.text = ""
-        bookAuthor.text = ""
-        bookCategory.text = ""
+        self.bookTitle.text = ""
+        self.bookAuthor.text = ""
+        self.bookCategory.text = ""
         
-        tableView.reloadData()
+        self.tableView.reloadData()
 
     }
     
     @IBAction func bookDelete(_ sender: Any) {
         
-        guard let selectedBook = selectedCell else { return }
-        let book = bookList[selectedBook.row]
-        removeBook(title: book.title, category: book.category, author: book.author)
-        bookDelete.isEnabled = false
-        tableView.reloadData()
+        guard let selectedBook = self.selectedCell else { return }
+        let book = self.bookList[selectedBook.row]
+        self.removeBook(title: book.title, category: book.category, author: book.author)
+        self.bookDelete.isEnabled = false
+        self.tableView.reloadData()
     }
     
     @IBAction func filterBooks(_ sender: Any) {
         
-        guard categoryTextField.text != "" else {
-            filterredBookList = bookList
-            tableView.reloadData()
+        guard self.categoryTextField.text != "" else {
+            self.filterredBookList = self.bookList
+            self.tableView.reloadData()
             
             return
         }
-        filterredBookList = searchBook( category: Category(rawValue: categoryTextField.text! ) )
-        tableView.reloadData()
-        categoryTextField.text = ""
+        self.filterredBookList = self.searchBook( category: Category(rawValue: self.categoryTextField.text! ) )
+        self.tableView.reloadData()
+        self.categoryTextField.text = ""
     }
     
     private func addBook(title: String!, author: String!, category: Category!) {
         
-        guard !bookList.contains(where: { $0.title == title &&
+        guard !self.bookList.contains(where: { $0.title == title &&
                                           $0.author == author &&
                                           $0.category == category } )
         else {
             return
         }
-        bookList.append( Book(title: title, author: author, category: category) )
+        self.bookList.append( Book(title: title, author: author, category: category) )
     }
     
     private func removeBook(title: String!, category: Category!, author: String!) {
         
-        if let bookIndex = bookList.firstIndex(where: { $0.title == title &&
+        if let bookIndex = self.bookList.firstIndex(where: { $0.title == title &&
                                                         $0.author == author &&
                                                         $0.category == category } )
         {
-            bookList.remove(at: bookIndex)
+            self.bookList.remove(at: bookIndex)
         } else {
             return
         }
@@ -89,7 +89,7 @@ class ViewController: UIViewController {
     
     private func searchBook(title: String? = "", category: Category? = nil, author: String? = "") -> [Book] {
         
-        return bookList.filter { book in
+        return self.bookList.filter { book in
             let matchedTitle = title == "" || book.title.lowercased().contains(title!.lowercased())
             let matchedCategory = category == nil || book.category == category
             let matchedAuthor = author == "" || book.author.lowercased().contains(author!.lowercased())
@@ -104,10 +104,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if categoryTextField.text == "" {
-            filterredBookList = bookList
+        if self.categoryTextField.text == "" {
+            self.filterredBookList = self.bookList
         }
-        return filterredBookList.count
+        return self.filterredBookList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -120,13 +120,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.contentView.subviews.forEach { $0.removeFromSuperview() }
         
         let bookTitle = UILabel()
-        bookTitle.text = filterredBookList[indexPath.row].title
+        bookTitle.text = self.filterredBookList[indexPath.row].title
         bookTitle.font = UIFont.systemFont(ofSize: 30)
         bookTitle.translatesAutoresizingMaskIntoConstraints = false
         cell.contentView.addSubview(bookTitle)
         
         let bookAuthor = UILabel()
-        bookAuthor.text = filterredBookList[indexPath.row].author
+        bookAuthor.text = self.filterredBookList[indexPath.row].author
         bookAuthor.translatesAutoresizingMaskIntoConstraints = false
         cell.contentView.addSubview(bookAuthor)
         
@@ -144,7 +144,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        selectedCell = indexPath
-        bookDelete.isEnabled = true
+        self.selectedCell = indexPath
+        self.bookDelete.isEnabled = true
     }
 }
