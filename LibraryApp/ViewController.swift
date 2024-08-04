@@ -26,6 +26,18 @@ class ViewController: UIViewController {
         }
         bookList.append( Book(title: title, author: author, category: category) )
     }
-
+    
+    private func removeBook(title: String!, category: Category!, author: String!) {
+        
+        if let bookIndex = bookList.firstIndex(where: { $0.title == title &&
+                                                        $0.author == author &&
+                                                        $0.category == category } )
+        {
+            bookList.remove(at: bookIndex)
+        } else {
+            return
+        }
+    }
+    
 }
 
