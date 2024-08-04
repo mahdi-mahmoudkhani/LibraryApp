@@ -29,6 +29,7 @@ enum Category: String {
     case selfHelp           = "Self-Help"
     case thriller           = "Thriller"
     case travel             = "Travel"
+    case none               = "none"
 }
 
 protocol BookProtocol {

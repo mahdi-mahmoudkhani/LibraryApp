@@ -17,6 +17,26 @@ class ViewController: UIViewController {
     }
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var bookTitle: UITextField!
+    @IBOutlet weak var bookAuthor: UITextField!
+    @IBOutlet weak var bookCategory: UITextField!
+    
+    @IBAction func addBook(_ sender: UIButton) {
+        
+        guard bookTitle.text != "", bookAuthor.text != "", bookCategory.text != "" else {
+            
+            return
+        }
+        
+        bookList.append( Book(title: bookTitle.text!, author: bookAuthor.text!, category: Category(rawValue: bookCategory.text!) ?? .none) )
+        
+        bookTitle.text = ""
+        bookAuthor.text = ""
+        bookCategory.text = ""
+        
+        tableView.reloadData()
+
+    }
     
     private func addBook(title: String!, author: String!, category: Category!) {
         
