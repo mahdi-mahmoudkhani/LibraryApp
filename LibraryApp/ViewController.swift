@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     
     private var bookList: [Book] = []
+    private var selectedCell: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var bookTitle: UITextField!
     @IBOutlet weak var bookAuthor: UITextField!
     @IBOutlet weak var bookCategory: UITextField!
+    @IBOutlet weak var bookDelete: UIButton!
     
     @IBAction func addBook(_ sender: UIButton) {
         
@@ -36,6 +38,15 @@ class ViewController: UIViewController {
         
         tableView.reloadData()
 
+    }
+    
+    @IBAction func bookDelete(_ sender: Any) {
+        
+        guard let selectedBook = selectedCell else { return }
+        let book = bookList[selectedBook.row]
+        removeBook(title: book.title, category: book.category, author: book.author)
+        bookDelete.isEnabled = false
+        tableView.reloadData()
     }
     
     private func addBook(title: String!, author: String!, category: Category!) {
@@ -88,6 +99,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
+        cell.contentView.subviews.forEach { $0.removeFromSuperview() }
+        
         let bookTitle = UILabel()
         bookTitle.text = bookList[indexPath.row].title
         bookTitle.font = UIFont.systemFont(ofSize: 30)
@@ -111,4 +124,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        selectedCell = indexPath
+        bookDelete.isEnabled = true
+    }
 }
