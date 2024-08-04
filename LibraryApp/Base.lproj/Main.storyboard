@@ -53,11 +53,20 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EVS-13-XKG">
-                                <rect key="frame" x="30" y="672" width="333" height="39"/>
+                                <rect key="frame" x="30" y="672" width="217" height="39"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Add Book"/>
                                 <connections>
                                     <action selector="addBook:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ybl-3f-s1e"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qqk-ue-aIV">
+                                <rect key="frame" x="257" y="672" width="106" height="39"/>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Delete"/>
+                                <connections>
+                                    <action selector="bookDelete:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PAd-jq-ZzG"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -65,25 +74,29 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="8PN-kX-SE1" firstAttribute="top" secondItem="kzB-q7-Hye" secondAttribute="bottom" constant="10" id="92k-qD-gMM"/>
+                            <constraint firstItem="qqk-ue-aIV" firstAttribute="leading" secondItem="EVS-13-XKG" secondAttribute="trailing" constant="10" id="B72-XP-sj6"/>
                             <constraint firstItem="8PN-kX-SE1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BRe-2I-ZdQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qqk-ue-aIV" secondAttribute="trailing" constant="30" id="G3F-LW-b3Q"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kzB-q7-Hye" secondAttribute="trailing" id="Gcc-kw-TjG"/>
                             <constraint firstItem="kzB-q7-Hye" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="HOk-10-fTF"/>
                             <constraint firstItem="EVS-13-XKG" firstAttribute="top" secondItem="8PN-kX-SE1" secondAttribute="bottom" constant="10" id="Kdw-2Y-RJL"/>
                             <constraint firstItem="OXg-Hd-0OO" firstAttribute="top" secondItem="kzB-q7-Hye" secondAttribute="bottom" constant="10" id="O6o-Wf-qsB"/>
                             <constraint firstItem="8PN-kX-SE1" firstAttribute="leading" secondItem="Zau-Xf-KzP" secondAttribute="trailing" constant="10" id="R4g-AG-N1v"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EVS-13-XKG" secondAttribute="trailing" constant="146" id="VrF-7Z-WoB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kzB-q7-Hye" secondAttribute="bottom" constant="200" id="WKN-1Y-Adn"/>
                             <constraint firstItem="OXg-Hd-0OO" firstAttribute="leading" secondItem="8PN-kX-SE1" secondAttribute="trailing" constant="10" id="YAV-AA-DOw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OXg-Hd-0OO" secondAttribute="trailing" constant="30" id="ad5-vt-VY1"/>
                             <constraint firstItem="Zau-Xf-KzP" firstAttribute="top" secondItem="kzB-q7-Hye" secondAttribute="bottom" constant="10" id="gI2-U6-xmZ"/>
                             <constraint firstItem="kzB-q7-Hye" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ipT-iq-OPK"/>
+                            <constraint firstItem="qqk-ue-aIV" firstAttribute="top" secondItem="OXg-Hd-0OO" secondAttribute="bottom" constant="10" id="l31-JM-PiP"/>
                             <constraint firstItem="Zau-Xf-KzP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="ni1-jj-LU7"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EVS-13-XKG" secondAttribute="trailing" constant="30" id="obm-2I-fxQ"/>
                             <constraint firstItem="EVS-13-XKG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="of6-VJ-PuJ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="bookAuthor" destination="8PN-kX-SE1" id="ZHR-6U-tnH"/>
                         <outlet property="bookCategory" destination="OXg-Hd-0OO" id="OCy-Tf-xuP"/>
+                        <outlet property="bookDelete" destination="qqk-ue-aIV" id="Pq2-43-b23"/>
                         <outlet property="bookTitle" destination="Zau-Xf-KzP" id="VTE-M6-yHH"/>
                         <outlet property="tableView" destination="kzB-q7-Hye" id="V1R-T3-OqL"/>
                     </connections>
@@ -96,6 +109,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
