@@ -39,5 +39,16 @@ class ViewController: UIViewController {
         }
     }
     
+    private func searchBook(title: String? = nil, category: Category? = nil, author: String? = nil) -> [Book] {
+        
+        return bookList.filter { book in
+            let matchedTitle = title?.isEmpty == true || book.title.lowercased().contains(title!.lowercased())
+            let matchedCategory = category == nil || book.category == category
+            let matchedAuthor = author?.isEmpty == true || book.author.lowercased().contains(author!.lowercased())
+            
+            return matchedTitle && matchedCategory && matchedAuthor
+        }
+    }
+    
 }
 
