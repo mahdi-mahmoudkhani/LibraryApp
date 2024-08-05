@@ -3,11 +3,11 @@
 //  LibraryApp
 //
 //  Created by Mahdi on 5/14/1403 AP.
-//
+//  This file was written by Me with assistance from ChatGPT to generate Category cases and order them alphabetically.
 
 import Foundation
 
-// MARK: Enum
+// MARK: Enums
 enum Category: String {
     
     case art                = "Art"
