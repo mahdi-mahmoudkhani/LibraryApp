@@ -7,17 +7,22 @@
 
 import UIKit
 
+// MARK: - View Controller
 class ViewController: UIViewController {
     
+    
+    // MARK: Class Properties
     private var bookList: [Book] = []
     private var filterredBookList: [Book] = []
     private var selectedCell: IndexPath?
     
+    // MARK: Page Load
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
     
+    // MARK: IBOutlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var bookTitle: UITextField!
     @IBOutlet weak var bookAuthor: UITextField!
@@ -25,6 +30,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var bookDelete: UIButton!
     @IBOutlet weak var categoryTextField: UITextField!
     
+    // MARK: IBActions
     @IBAction func addBook(_ sender: UIButton) {
         
         guard self.bookTitle.text != "", self.bookAuthor.text != "", self.bookCategory.text != "" else {
@@ -64,6 +70,7 @@ class ViewController: UIViewController {
         self.categoryTextField.text = ""
     }
     
+    // MARK: Class Methods
     private func addBook(title: String!, author: String!, category: Category!) {
         
         guard !self.bookList.contains(where: { $0.title == title &&
@@ -100,6 +107,7 @@ class ViewController: UIViewController {
     
 }
 
+// MARK: - View Controller Extension
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

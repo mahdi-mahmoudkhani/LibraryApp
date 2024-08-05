@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: Enum
 enum Category: String {
     
     case art                = "Art"
@@ -32,6 +33,7 @@ enum Category: String {
     case none               = "none"
 }
 
+// MARK: Protocols
 protocol BookProtocol {
     
     var title: String { get }
@@ -39,6 +41,7 @@ protocol BookProtocol {
     var category: Category { get }
 }
 
+// MARK: Structs
 struct Book: BookProtocol {
     
     let title, author: String
